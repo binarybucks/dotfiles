@@ -1,1 +1,1 @@
-/home/alexander/.dotfiles/bash
+/home/alexander/.newdotfiles/bash

@@ -1,6 +1,0 @@
-set -g status-right ‘#[fg=yellow]#(uptime | cut -d "," -f 2-)#[default]%H:%M’
-
-# Rather than constraining window size to the maximum size of any client 
-# connected to the *session*, constrain window size to the maximum size of any 
-# client connected to *that window*. Much more reasonable.
-setw -g aggressive-resize on

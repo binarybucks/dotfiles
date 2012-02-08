@@ -1,1 +1,1 @@
-/home/alexander/.dotfiles/zsh
+/home/alexander/.newdotfiles/zsh

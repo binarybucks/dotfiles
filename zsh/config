@@ -1,12 +1,20 @@
+## Zsh functions
+  fpath=(~/.zsh/functions $fpath)
+  autoload -U ~/.zsh/functions/*(:t)
+
+
+export TERM=screen-256color
+
 ## Check which host we are running on
-#  export FULLHOST=$(hostname --fqdn 2>/dev/null || hostname -f 2>/dev/null || hostname)
-#  export SHORTHOST=$(echo $FULLHOST | cut -d. -f1-2)
+  export FULLHOST=$(hostname --fqdn 2>/dev/null || hostname -f 2>/dev/null || hostname)
+  export SHORTHOST=$(echo $FULLHOST | cut -d. -f1-2)
+
 ## Colors
-  autoload -U colors && colors
+autoload -U spectrum && spectrum
 
 ## Shell promt
- 	export PS1='$( date "+%H:%M:%S") %n@$(hostname -s): %{$fg[purple]%}%3~%{$reset_color%} $( git_info_for_prompt)%# '
-
+  #See https://wiki.archlinux.org/index.php/Zsh#Prompt_variables for more
+ 	export PS1='$FX[bold]$FG[193]%n@%m $FG[243]%3~$FX[reset] $( git_info_for_prompt)%# '
 
 ## Window and tab title for xterm compatible shells 
   case $TERM in
@@ -26,10 +34,12 @@
              [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:${a//\%/\%\%}\a"
         fi
         ;;
-    xterm*)
-       precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+    *)
+        precmd () {print -Pn "\e]0;%n@%m: %~\a"}
         ;;
   esac
+
+
 
 ## Editor, path & manpath 
   export EDITOR='vim'
@@ -44,11 +54,6 @@
 ## Paths
   export SEMESTERPATH=~/Studium/Semester3
   export CODEPATH=~/Code
-
-  
-## Zsh functions
-  fpath=(~/.zsh/functions $fpath)
-  autoload -U ~/.zsh/functions/*(:t)
 
 ## Zsh historyy
   HISTFILE=~/.zsh_history

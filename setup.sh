@@ -35,10 +35,10 @@ function doIt() {
   fi
   ln -f -s $BASEDIR/bash/bashrc ~/.bashrc
 
-  if [ -a ~/.tmuxrc ]; then
-    mv ~/.tmuxrc $BACKUPDIR
+  if [ -a ~/.tmux.conf ]; then
+    mv ~/.tmux.conf $BACKUPDIR
   fi
-  ln -f -s $BASEDIR/tmux/tmuxrc ~/.tmuxrc
+  ln -f -s $BASEDIR/tmux/tmux.conf ~/.tmux.conf
 
   if [ -d ~/.scripts ]; then
     mv ~/.scripts $BACKUPDIR

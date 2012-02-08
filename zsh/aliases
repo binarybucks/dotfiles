@@ -1,0 +1,19 @@
+# color support for tmux
+alias tmux="tmux -2"
+
+# su
+alias su='sudo -s'
+
+# cd
+alias ..='cd ..'
+
+# grep 
+alias egrep='egrep --color'
+alias grep='grep --color'
+
+# ls
+alias ll="ls -l"
+alias la='ls -la'
+
+# reload zsh settings
+alias reload='. ~/.zshrc'

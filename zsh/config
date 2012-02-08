@@ -1,0 +1,77 @@
+## Check which host we are running on
+#  export FULLHOST=$(hostname --fqdn 2>/dev/null || hostname -f 2>/dev/null || hostname)
+#  export SHORTHOST=$(echo $FULLHOST | cut -d. -f1-2)
+## Colors
+  autoload -U colors && colors
+
+## Shell promt
+ 	export PS1='$( date "+%H:%M:%S") %n@$(hostname -s): %{$fg[purple]%}%3~%{$reset_color%} $( git_info_for_prompt)%# '
+
+
+## Window and tab title for xterm compatible shells 
+  case $TERM in
+    screen*)
+        # We're in screen or tmux, so set the terminal title and the screen window title
+        # Screen/tmux tab title
+        [[ $a = zsh ]] && print -Pn "\ek$2\e\\" # show the path if no program is running
+        [[ $a != zsh ]] && print -Pn "\ek$a\e\\" # if a program is running show that
+
+        # Terminal title
+        if [[ -n $STY ]] ; then
+             [[ $a = zsh ]] && print -Pn "\e]2;$SHORTHOST:S\[$WINDOW\]:$2\a"
+             [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:S\[$WINDOW\]:${a//\%/\%\%}\a"
+        elif [[ -n $TMUX ]] ; then
+             # We're running in tmux, not screen
+             [[ $a = zsh ]] && print -Pn "\e]2;$SHORTHOST:$2\a"
+             [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:${a//\%/\%\%}\a"
+        fi
+        ;;
+    xterm*)
+       precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+        ;;
+  esac
+
+## Editor, path & manpath 
+  export EDITOR='vim'
+  export PATH="~/bin:~/.scripts:/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/texbin:$PATH"
+  export MANPATH="/usr/local/man:$MANPATH"
+
+## Hostnames
+  export HOSTNAMEPRIVATENOTEBOOK="heisenberg"
+  export HOSTNAMEHOMESERVER="fortress"
+  export HOSTNAMEWORKNOTEBOOK="tp"
+
+## Paths
+  export SEMESTERPATH=~/Studium/Semester3
+  export CODEPATH=~/Code
+
+  
+## Zsh functions
+  fpath=(~/.zsh/functions $fpath)
+  autoload -U ~/.zsh/functions/*(:t)
+
+## Zsh historyy
+  HISTFILE=~/.zsh_history
+  HISTSIZE=1000
+  SAVEHIST=1000
+
+## Zsh options
+  setopt NO_BG_NICE # don't nice background tasks
+  setopt NO_HUP
+  setopt NO_LIST_BEEP
+  setopt LOCAL_OPTIONS # allow functions to have local options
+  setopt LOCAL_TRAPS # allow functions to have local traps
+  setopt HIST_VERIFY
+  setopt SHARE_HISTORY # share history between sessions ???
+  setopt PROMPT_SUBST
+  setopt COMPLETE_IN_WORD
+  setopt IGNORE_EOF
+  setopt APPEND_HISTORY # adds history
+  setopt INC_APPEND_HISTORY # adds history incrementally 
+  setopt HIST_IGNORE_ALL_DUPS # don't record dupes in history
+  setopt HIST_REDUCE_BLANKS
+  zle -N newtab
+
+## Key bindings
+  bindkey '^A' beginning-of-line
+  bindkey '^E' end-of-line

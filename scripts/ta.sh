@@ -17,7 +17,7 @@ else
   echo "Creating new default session"
   tmux new-session -d -s default
 
-  case $FULLHOST in
+  case $SHORTHOST in
    $HOSTNAMEHOMESERVER) 
      tmux new-window -t default:1 -n 'Xmpp' 'mcabber'
      tmux new-window -t default:2 -n 'Temps' 'temps'

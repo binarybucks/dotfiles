@@ -6,15 +6,16 @@
 export TERM=screen-256color
 
 ## Check which host we are running on
-  export FULLHOST=$(hostname --fqdn 2>/dev/null || hostname -f 2>/dev/null || hostname)
-  export SHORTHOST=$(echo $FULLHOST | cut -d. -f1-2)
+  export SHORTHOST=$(hostname -s)
 
 ## Colors
-autoload -U spectrum && spectrum
+#autoload -U spectrum && spectrum
+autoload -U colors && colors
+
 
 ## Shell promt
   #See https://wiki.archlinux.org/index.php/Zsh#Prompt_variables for more
- 	export PS1='$FX[bold]$FG[193]%n@%m $FG[243]%3~$FX[reset] $( git_info_for_prompt)%# '
+  export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg[green]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_info_for_prompt) > '
 
 ## Window and tab title for xterm compatible shells 
   case $TERM in
@@ -33,6 +34,7 @@ autoload -U spectrum && spectrum
              [[ $a = zsh ]] && print -Pn "\e]2;$SHORTHOST:$2\a"
              [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:${a//\%/\%\%}\a"
         fi
+	precmd () {print -Pn "\e]0;%n@%m: %~\a"}
         ;;
     *)
         precmd () {print -Pn "\e]0;%n@%m: %~\a"}

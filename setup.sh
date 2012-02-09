@@ -12,7 +12,18 @@ function doIt() {
   else
     mkdir $BACKUPDIR
   fi
+
+
+  if [ -d ~/.vim ]; then
+    mv ~/.vim $BACKUPDIR
+  fi
+  ln -f -s $BASEDIR/vim ~/.vim 
   
+  if [ -a ~/.vimrc ]; then
+      mv ~/.vimrc $BACKUPDIR
+  fi
+  ln -f -s $BASEDIR/vim/vimrc ~/.vimrc
+
 
   if [ -d ~/.zsh ]; then
     mv ~/.zsh $BACKUPDIR

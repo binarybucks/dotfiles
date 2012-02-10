@@ -4,6 +4,9 @@ alias tmux="tmux -2"
 # su
 alias su='sudo -s'
 
+# vi
+alias vi='vim'
+
 # cd
 alias ..='cd ..'
 

@@ -1,47 +1,40 @@
-## Zsh functions
-  fpath=(~/.zsh/functions $fpath)
-  autoload -U ~/.zsh/functions/*(:t)
+## Init Zsh functions
+fpath=(~/.zsh/functions $fpath)
+autoload -U ~/.zsh/functions/*(:t)
 
+## Check which host we are running on
+export SHORTHOST=$(hostname -s)
 
+## Colors
+autoload -U colors && colors
 export TERM=screen-256color
 
 ## Check which host we are running on
-  export SHORTHOST=$(hostname -s)
-
-## Colors
-#autoload -U spectrum && spectrum
-autoload -U colors && colors
-
+export SHORTHOST=$(hostname -s)
 
 ## Shell promt
   #See https://wiki.archlinux.org/index.php/Zsh#Prompt_variables for more
-  export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg[green]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_info_for_prompt) > '
+  export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[green]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_info_for_prompt)> '
 
 ## Window and tab title for xterm compatible shells 
   case $TERM in
-    screen*)
+    screen-256color*)
         # We're in screen or tmux, so set the terminal title and the screen window title
         # Screen/tmux tab title
-        [[ $a = zsh ]] && print -Pn "\ek$2\e\\" # show the path if no program is running
-        [[ $a != zsh ]] && print -Pn "\ek$a\e\\" # if a program is running show that
+#        [[ $a = zsh ]] && print -Pn "\ek$2\e\\" # show the path if no program is running
+#        [[ $a != zsh ]] && print -Pn "\ek$a\e\\" # if a program is running show that
 
         # Terminal title
-        if [[ -n $STY ]] ; then
-             [[ $a = zsh ]] && print -Pn "\e]2;$SHORTHOST:S\[$WINDOW\]:$2\a"
-             [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:S\[$WINDOW\]:${a//\%/\%\%}\a"
-        elif [[ -n $TMUX ]] ; then
-             # We're running in tmux, not screen
-             [[ $a = zsh ]] && print -Pn "\e]2;$SHORTHOST:$2\a"
-             [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:${a//\%/\%\%}\a"
-        fi
+#        if [[ -n $TMUX ]] ; then
+#             [[ $a = zsh ]] && print -Pn "\e]2;$SHORTHOST:$2\a"
+#             [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:${a//\%/\%\%}\a"
+#        fi
 	precmd () {print -Pn "\e]0;%n@%m: %~\a"}
         ;;
     *)
         precmd () {print -Pn "\e]0;%n@%m: %~\a"}
         ;;
   esac
-
-
 
 ## Editor, path & manpath 
   export EDITOR='vim'
@@ -53,7 +46,7 @@ autoload -U colors && colors
   export HOSTNAMEHOMESERVER="fortress"
   export HOSTNAMEWORKNOTEBOOK="tp"
 
-## Paths
+## Custom Paths
   export SEMESTERPATH=~/Studium/Semester3
   export CODEPATH=~/Code
 

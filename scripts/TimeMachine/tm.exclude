@@ -1,4 +1,7 @@
+.Parent
+.AppleDouble
 .dropbox
+.Spotlight*
 .fontconfig
 .Trash
 .DS_Store

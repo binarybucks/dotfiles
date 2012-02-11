@@ -1,4 +1,6 @@
 #! /bin/bash
+# On OSX copy plist to ~/Library/LaunchAgents for periodic backups
+
 START=0
 END=0
 GROWLNOTIFY="/usr/local/bin/growlnotify"

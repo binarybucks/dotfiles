@@ -1,1 +1,1 @@
-/home/alexander/.dotfiles/zsh/zshrc
+/Users/alexander/.dotfiles/zsh/zshrc

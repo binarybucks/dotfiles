@@ -38,7 +38,7 @@ export SHORTHOST=$(hostname -s)
 
 ## Editor, path & manpath 
   export EDITOR='vim'
-  export PATH="~/bin:~/.scripts:/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/texbin:$PATH"
+  export PATH="~/bin:$HOME/.scripts:/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/texbin:$PATH"
   export MANPATH="/usr/local/man:$MANPATH"
 
 ## Hostnames

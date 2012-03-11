@@ -29,7 +29,8 @@ export SHORTHOST=$(hostname -s)
 
 ## Editor, path & manpath 
   export EDITOR='vim'
-  export PATH="~/bin:$HOME/.scripts:/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/texbin:$PATH"
+  export CLASSPATH=".:/Users/alexander/Studium/Semester4/FLA/Antlr/antlr-3.4-complete.jar:$CLASSPATH:"
+  export PATH="~/bin:$HOME/.scripts:/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/texbin:/usr/local/mysql/bin:$PATH"
   export MANPATH="/usr/local/man:$MANPATH"
 
 ## Hostnames
@@ -38,7 +39,7 @@ export SHORTHOST=$(hostname -s)
   export HOSTNAMEWORKNOTEBOOK="tp"
 
 ## Custom Paths
-  export SEMESTERPATH=~/Studium/Semester3
+  export SEMESTERPATH=~/Studium/Semester4
   export CODEPATH=~/Code
 
 ## Zsh historyy

@@ -1,5 +1,3 @@
-.AppleDouble/
-*.swo
-*.swp
+backup/*
 zsh/local
 

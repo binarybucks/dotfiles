@@ -1,1 +1,1 @@
-/home/alexander/.dotfiles/bash/bashrc
+/Users/alexander/.dotfiles/bash/bashrc

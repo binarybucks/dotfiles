@@ -1,0 +1,16 @@
+.Parent
+.AppleDouble
+.dropbox
+.Spotlight*
+.fontconfig
+.Trash
+.DS_Store
+.lesshst
+.zsh_history
+*.log
+Icon?
+*Cache*
+$RECYCLE.BIN
+Saved Application State
+Downloads
+Dropbox

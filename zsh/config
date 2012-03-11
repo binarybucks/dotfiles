@@ -19,16 +19,7 @@ export SHORTHOST=$(hostname -s)
 ## Window and tab title for xterm compatible shells 
   case $TERM in
     screen-256color*)
-        # We're in screen or tmux, so set the terminal title and the screen window title
-        # Screen/tmux tab title
-#        [[ $a = zsh ]] && print -Pn "\ek$2\e\\" # show the path if no program is running
-#        [[ $a != zsh ]] && print -Pn "\ek$a\e\\" # if a program is running show that
-
-        # Terminal title
-#        if [[ -n $TMUX ]] ; then
-#             [[ $a = zsh ]] && print -Pn "\e]2;$SHORTHOST:$2\a"
-#             [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:${a//\%/\%\%}\a"
-#        fi
+        # Do something when in screen or tmux
 	precmd () {print -Pn "\e]0;%n@%m: %~\a"}
         ;;
     *)
@@ -73,5 +64,6 @@ export SHORTHOST=$(hostname -s)
   zle -N newtab
 
 ## Key bindings
+  bindkey '^R' history-incremental-search-backward
   bindkey '^A' beginning-of-line
   bindkey '^E' end-of-line

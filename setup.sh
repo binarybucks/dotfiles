@@ -8,11 +8,9 @@ function doIt() {
   # Prepare backup directory
   if [ -d "$BACKUPDIR" ]; then
     rm -rf $BACKUPDIR/*
-  
   else
     mkdir $BACKUPDIR
   fi
-
 
   if [ -d ~/.vim ]; then
     mv ~/.vim $BACKUPDIR
@@ -55,6 +53,25 @@ function doIt() {
     mv ~/.scripts $BACKUPDIR
   fi
   ln -f -s $BASEDIR/scripts ~/.scripts
+
+
+
+  if [ -a ~/.gitignore ]; then
+    mv ~/.gitignore $BACKUPDIR
+  fi  
+  ln -f -s $BASEDIR/git/gitignore ~/.gitignore
+
+  if ! type -p git > /dev/null; then
+    echo "Git is apparently not installed, skipping setup"  
+  else 
+    echo -n "Your Name: "
+    read GITUSER
+    echo -n "Your Mail: "
+    read GITMAIL
+    git config --global user.name "$GITUSER"
+    git config --global user.email "$GITMAIL"
+    git config --global core.excludesfile ~/.gitignore
+  fi
 }
 
 

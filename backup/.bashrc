@@ -1,1 +1,0 @@
-/Users/alexander/.dotfiles/bash/bashrc

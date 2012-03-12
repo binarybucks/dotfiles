@@ -5,61 +5,16 @@ BASEDIR=`dirname "$SCRIPTPATH"`
 BACKUPDIR=$BASEDIR/backup
 
 function doIt() { 
-  # Prepare backup directory
-  if [ -d "$BACKUPDIR" ]; then
-    rm -rf $BACKUPDIR/*
-  else
-    mkdir $BACKUPDIR
-  fi
-
-  if [ -d ~/.vim ]; then
-    mv ~/.vim $BACKUPDIR
-  fi
   ln -f -s $BASEDIR/vim ~/.vim 
-  
-  if [ -a ~/.vimrc ]; then
-      mv ~/.vimrc $BACKUPDIR
-  fi
-  ln -f -s $BASEDIR/vim/vimrc ~/.vimrc
-
-
-  if [ -d ~/.zsh ]; then
-    mv ~/.zsh $BACKUPDIR
-  fi
   ln -f -s $BASEDIR/zsh ~/.zsh
-
-  if [ -d ~/.bash ]; then
-    mv ~/.bash $BACKUPDIR
-  fi
   ln -f -s $BASEDIR/bash ~/.bash
-
-
-  if [ -a ~/.zshrc ]; then
-    mv ~/.zshrc $BACKUPDIR
-  fi
   ln -f -s $BASEDIR/zsh/zshrc ~/.zshrc
-  
-  if [ -a ~/.bashrc ]; then
-    mv ~/.bashrc $BACKUPDIR
-  fi
   ln -f -s $BASEDIR/bash/bashrc ~/.bashrc
-
-  if [ -a ~/.tmux.conf ]; then
-    mv ~/.tmux.conf $BACKUPDIR
-  fi
   ln -f -s $BASEDIR/tmux/tmux.conf ~/.tmux.conf
-
-  if [ -d ~/.scripts ]; then
-    mv ~/.scripts $BACKUPDIR
-  fi
   ln -f -s $BASEDIR/scripts ~/.scripts
-
-
-
-  if [ -a ~/.gitignore ]; then
-    mv ~/.gitignore $BACKUPDIR
-  fi  
   ln -f -s $BASEDIR/git/gitignore ~/.gitignore
+  ln -f -s $BASEDIR/gem/gemrc ~/.gemrc
+
 
   if ! type -p git > /dev/null; then
     echo "Git is apparently not installed, skipping setup"  

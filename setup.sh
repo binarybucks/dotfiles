@@ -15,6 +15,10 @@ function doIt() {
   ln -f -s $BASEDIR/git/gitignore ~/.gitignore
   ln -f -s $BASEDIR/gem/gemrc ~/.gemrc
 
+  # Protect user gem dir from accidential writing
+  if [ -d "~/.gem" ]; then
+	mod -R u-w ~/.gem
+  fi
 
   if ! type -p git > /dev/null; then
     echo "Git is apparently not installed, skipping setup"  

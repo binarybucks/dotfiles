@@ -30,7 +30,7 @@ export SHORTHOST=$(hostname -s)
 ## Editor, path & manpath 
   export EDITOR='vim'
   export CLASSPATH=".:/Users/alexander/Studium/Semester4/FLA/Antlr/antlr-3.4-complete.jar:$CLASSPATH:"
-  export PATH="~/bin:$HOME/.scripts:/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/texbin:/usr/local/mysql/bin:$PATH"
+  export PATH="~/bin:$HOME/.scripts:/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/texbin:/usr/local/mysql/bin:/usr/lib/ruby/gems/1.9.1:$PATH"
   export MANPATH="/usr/local/man:$MANPATH"
 
 ## Hostnames

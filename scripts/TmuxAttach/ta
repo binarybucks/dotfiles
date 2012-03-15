@@ -19,7 +19,6 @@ else
   case $SHORTHOST in
    $HOSTNAMEHOMESERVER) 
      tmux new-window -t default:1 -n 'Xmpp' 'mcabber'
-     tmux new-window -t default:2 -n 'Temps' 'temps'
      ;;
    *)
      ;;

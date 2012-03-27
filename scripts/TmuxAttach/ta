@@ -19,8 +19,11 @@ else
   case $SHORTHOST in
    $HOSTNAMEHOMESERVER) 
      tmux new-window -t default:1 -n 'Xmpp' 'mcabber'
+     tmux new-window -t default:2 -n 'Alsamixer' 'alsamixer'
+     tmux new-window -t default:3 -n 'Mcd' 'ncmpcpp'
      ;;
    *)
+     echo "No session presets set"	
      ;;
   esac
 fi 

@@ -7,13 +7,12 @@ export SHORTHOST=$(hostname -s)
 
 ## Colors
 autoload -U colors && colors
-#export TERM=screen-256color
 
 ## Check which host we are running on
 export SHORTHOST=$(hostname -s)
 
 ## Shell promt
-export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[green]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_info_for_prompt)> '
+export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[green]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_info_for_prompt)$(title)> '
 
 ## Window and tab title for xterm compatible shells 
 #  case $TERM in
@@ -44,19 +43,20 @@ typeset -ga precmd_functions
 function title() {
 	# $1 - the command running. Set to zsh if nothing is
 	# $2 - truncated path
-	local a
+	#local a
         # escape '%' chars in $1, make nonprintables visible
-        a=${(V)1//\%/\%\%}
+        #a=${(V)1//\%/\%\%}
         # Truncate command, and join lines.
-        a=$(print -Pn "$a" | tr -d "\n")
+        #a=$(print -Pn "$a" | tr -d "\n")
         # Remove 'sudo ' from the start of the command if it's there
-        a=${a#sudo }
+        #a=${a#sudo }
 	# The format depends on how we're running
         case $TERM in
         screen*)
 		# We're in screen or tmux, so set the terminal title and the screen window title
 		print -Pn "\033]0;(TMUX)%n@%m: %~\007"
-                # Screen/tmux tab title
+		
+		# Screen/tmux tab title
                 #[[ $a = zsh ]] && print -Pn "\ek$2\e\\" # show the path if no program is running
                 #[[ $a != zsh ]] && print -Pn "\ek$a\e\\" # if a program is running show that
 
@@ -70,24 +70,23 @@ function title() {
                 #        [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:${a//\%/\%\%}\a"
                 #fi
                 ;;
-        *)
-                #print -Pn "\e]2;xterm zsh\a"
-                 print -Pn "\033]0;%n@%m: %~\007"
+        xterm*)
+                print -Pn "\033]0;%n@%m: %~\007"
 		;;
         esac
 }
 
 
 
-# Set & reset the terminal title(s)
-function title_precmd() {
-        title "zsh" "%15<...<%~"
-}
-function title_preexec() {
-        title "$1" "%15<...<%~"
-}
-precmd_functions+=title_precmd
-preexec_functions+=title_preexec
+#Set & reset the terminal title(s)
+#function title_precmd() {
+#        title "zsh" "%15<...<%~"
+#}
+#function title_preexec() {
+#        title "$1" "%15<...<%~"
+#}
+#precmd_functions+=title_precmd
+#preexec_functions+=title_preexec
 
 
 

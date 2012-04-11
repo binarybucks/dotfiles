@@ -7,13 +7,12 @@ export SHORTHOST=$(hostname -s)
 
 ## Colors
 autoload -U colors && colors
-#export TERM=screen-256color
 
 ## Check which host we are running on
 export SHORTHOST=$(hostname -s)
 
 ## Shell promt
-export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[green]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_info_for_prompt)> '
+export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[green]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_info_for_prompt)$(title)> '
 
 ## Window and tab title for xterm compatible shells 
 #  case $TERM in
@@ -37,8 +36,8 @@ export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[green]%}%3~%{$fg[
 #esac
 # Prompt
 #####
-typeset -ga preexec_functions
-typeset -ga precmd_functions
+#typeset -ga preexec_functions
+#typeset -ga precmd_functions
 
 # Called in preexec() and precmd() to set the window title and screen title (if in screen/tmux)
 function title() {
@@ -61,16 +60,16 @@ function title() {
                 #[[ $a != zsh ]] && print -Pn "\ek$a\e\\" # if a program is running show that
 
                 # Terminal title
-                #if [[ -n $STY ]] ; then
-                #        [[ $a = zsh ]] && print -Pn "\e]2;$SHORTHOST:S\[$WINDOW\]:$2\a"
-                #        [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:S\[$WINDOW\]:${a//\%/\%\%}\a"
-                #elif [[ -n $TMUX ]] ; then
-                #        # We're running in tmux, not screen
-                #        [[ $a = zsh ]] && print -Pn "\e]2;$SHORTHOST:$2\a"
-                #        [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:${a//\%/\%\%}\a"
-                #fi
+               # if [[ -n $STY ]] ; then
+               #         [[ $a = zsh ]] && print -Pn "\e]2;$SHORTHOST:S\[$WINDOW\]:$2\a"
+               #         [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:S\[$WINDOW\]:${a//\%/\%\%}\a"
+               # elif [[ -n $TMUX ]] ; then
+                        # We're running in tmux, not screen
+               #         [[ $a = zsh ]] && print -Pn "\e]2;$SHORTHOST:$2\a"
+               #         [[ $a != zsh ]] && print -Pn "\e]2;$SHORTHOST:${a//\%/\%\%}\a"
+               # fi
                 ;;
-        *)
+        xterm*)
                 #print -Pn "\e]2;xterm zsh\a"
                  print -Pn "\033]0;%n@%m: %~\007"
 		;;
@@ -79,15 +78,15 @@ function title() {
 
 
 
-# Set & reset the terminal title(s)
-function title_precmd() {
-        title "zsh" "%15<...<%~"
-}
-function title_preexec() {
-        title "$1" "%15<...<%~"
-}
-precmd_functions+=title_precmd
-preexec_functions+=title_preexec
+## Set & reset the terminal title(s)
+#function title_precmd() {
+#        title "zsh" "%15<...<%~"
+#}
+#function title_preexec() {
+#        title "$1" "%15<...<%~"
+#}
+#precmd_functions+=title_precmd
+#preexec_functions+=title_preexec
 
 
 

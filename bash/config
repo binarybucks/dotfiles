@@ -1,7 +1,5 @@
 ## start zsh if available
-if [[ ! -z "$PS1" ]]; then
         [ -f /bin/zsh ] && {
                 exec /bin/zsh -l
         }
-fi
 

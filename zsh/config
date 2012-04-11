@@ -17,16 +17,31 @@ export SHORTHOST=$(hostname -s)
   export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[green]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_info_for_prompt)> '
 
 ## Window and tab title for xterm compatible shells 
-  case $TERM in
-    screen-256color*)
-        # Do something when in screen or tmux
-	precmd () {print -Pn "\e]0;%n@%m: %~\a"}
-        ;;
-    *)
-        precmd () {print -Pn "\e]0;%n@%m: %~\a"}
-        ;;
-  esac
-
+#  case $TERM in
+ #   screen-256color*)
+ #       # Do something when in screen or tmux
+#	PROMPT_COMMAND="printf '\033k$(hostname -s)\033\\';"${PROMPT_COMMAND}
+#	;;
+#    *)
+#        precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+#        ;;
+#  esac
+case $TERM in
+    *xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color|(dt|k|E)term)
+precmd () { print -Pn "\e]0;[%n@%M][%~]%#\a" }
+preexec () { print -Pn "\e]0;[%n@%M][%~]%# ($1)\a" }
+;;
+    screen)
+     precmd () {
+print -Pn "\e]83;title \"$1\"\a"
+print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~]\a"
+}
+preexec () {
+print -Pn "\e]83;title \"$1\"\a"
+print -Pn "\e]0;$TERM - (%L) [%n@%M]%# [%~] ($1)\a"
+}
+;;
+esac
 ## Editor, path & manpath 
   export EDITOR='vim'
   export CLASSPATH=".:/Users/alexander/Studium/Semester4/FLA/Antlr/antlr-3.4-complete.jar:$CLASSPATH:"

@@ -18,5 +18,10 @@ alias grep='grep --color'
 alias ll="ls -l"
 alias la='ls -la'
 
+#pacman 
+alias install='sudo pacman -Syu '
+alias remove='sudo pacman -Rsnc '
+alias search='pacman -Ss '
+
 # reload zsh settings
 alias reload='. ~/.zshrc'

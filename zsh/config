@@ -5,6 +5,9 @@ autoload -U ~/.zsh/functions/*(:t)
 ## Check which host we are running on
 export SHORTHOST=$(hostname -s)
 
+## Export lang for mosh to work
+export LANG=en_US.UTF-8
+
 ## Colors
 autoload -U colors && colors
 

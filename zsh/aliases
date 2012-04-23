@@ -26,5 +26,8 @@ alias install='sudo pacman -Syu '
 alias remove='sudo pacman -Rsnc '
 alias search='pacman -Ss '
 
+
+#bc
+alias calc="bc"
 # reload zsh settings
 alias reload='. ~/.zshrc'

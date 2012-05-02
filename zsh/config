@@ -49,7 +49,7 @@ preexec_functions+=title_preexec
 
 ## Hostnames
   export HOSTNAMEPRIVATENOTEBOOK="heisenberg"
-  export HOSTNAMEHOMESERVER="fortress"
+  export HOSTNAMEHOMESERVER="fermi"
   export HOSTNAMEWORKNOTEBOOK="tp"
 
 ## Custom Paths

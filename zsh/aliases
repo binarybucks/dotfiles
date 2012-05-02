@@ -22,9 +22,10 @@ alias ll="ls -l"
 alias la='ls -la'
 
 #pacman 
-alias install='sudo pacman -Syu '
-alias remove='sudo pacman -Rsnc '
+alias install='pacman -Syu '
+alias remove='pacman -Rsnc '
 alias search='pacman -Ss '
+alias removeunused='pacman -Rsn $(pacman -Qqdt)'
 
 
 #bc

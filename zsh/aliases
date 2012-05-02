@@ -27,5 +27,8 @@ alias remove='pacman -Rsnc '
 alias search='pacman -Ss '
 alias removeunused='pacman -Rsn $(pacman -Qqdt)'
 
+
+#bc
+alias calc="bc"
 # reload zsh settings
 alias reload='. ~/.zshrc'

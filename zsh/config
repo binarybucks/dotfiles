@@ -15,7 +15,7 @@ autoload -U colors && colors
 export SHORTHOST=$(hostname -s)
 
 ## Shell promt
-export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[green]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_info_for_prompt)> '
+export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[red]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_info_for_prompt)> '
 
 function setWindowTitle() {
         case $TERM in
@@ -62,6 +62,8 @@ preexec_functions+=title_preexec
   SAVEHIST=1000
 
 ## Zsh options
+
+  setopt autocd
   setopt NO_BG_NICE # don't nice background tasks
   setopt NO_HUP
   setopt NO_LIST_BEEP
@@ -76,7 +78,7 @@ preexec_functions+=title_preexec
   setopt INC_APPEND_HISTORY # adds history incrementally 
   setopt HIST_IGNORE_ALL_DUPS # don't record dupes in history
   setopt HIST_REDUCE_BLANKS
-  zle -N newtab
+zle -N newtab
 
 ## Key bindings
   bindkey '^R' history-incremental-search-backward

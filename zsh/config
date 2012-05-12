@@ -80,7 +80,4 @@ preexec_functions+=title_preexec
   setopt HIST_REDUCE_BLANKS
 zle -N newtab
 
-## Key bindings
-  bindkey '^R' history-incremental-search-backward
-  bindkey '^A' beginning-of-line
-  bindkey '^E' end-of-line
+mdc() { mkdir -p "$1" && cd "$1" }

@@ -78,6 +78,12 @@ preexec_functions+=title_preexec
   setopt INC_APPEND_HISTORY # adds history incrementally 
   setopt HIST_IGNORE_ALL_DUPS # don't record dupes in history
   setopt HIST_REDUCE_BLANKS
-zle -N newtab
+  zle -N newtab
+
+
+## Key bindings
+  bindkey '^R' history-incremental-search-backward
+  bindkey '^A' beginning-of-line
+  bindkey '^E' end-of-line
 
 mdc() { mkdir -p "$1" && cd "$1" }

@@ -80,7 +80,7 @@ alexander.xcuserdatad
 
 # Editor project files # 
 *.chproj
-
+*.tmproj
 # Other VCS# 
 ############
 .hg

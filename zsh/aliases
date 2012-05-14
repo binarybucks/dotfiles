@@ -28,6 +28,8 @@
   alias removeunused='pacman -Rsn $(pacman -Qqdt)'
 
 #git
+  alias git="hub"
+
   alias g='git'
   alias gst='git status'
   compdef _git gst=git-status

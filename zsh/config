@@ -15,20 +15,20 @@
   autoload -U colors && colors
 
 ## Git symbols
-ZSH_THEME_GIT_PROMPT_PREFIX="(" # Prefix at the very beginning of the prompt, before the branch name
-ZSH_THEME_GIT_PROMPT_SUFFIX=") " # At the very end of the prompt
-ZSH_THEME_GIT_PROMPT_DIRTY=" ~" # Text to display if the branch is dirty
-ZSH_THEME_GIT_PROMPT_CLEAN="" # Text to display if the branch is clean
+export ZSH_THEME_GIT_PROMPT_PREFIX="(" # Prefix at the very beginning of the prompt, before the branch name
+export ZSH_THEME_GIT_PROMPT_SUFFIX=") " # At the very end of the prompt
+export ZSH_THEME_GIT_PROMPT_DIRTY=" ~" # Text to display if the branch is dirty
+export ZSH_THEME_GIT_PROMPT_CLEAN="" # Text to display if the branch is clean
 
-ZSH_THEME_GIT_PROMPT_ADDED="+"
-ZSH_THEME_GIT_PROMPT_MODIFIED="!"
-ZSH_THEME_GIT_PROMPT_DELETED="-"
-ZSH_THEME_GIT_PROMPT_RENAMED=">"
-ZSH_THEME_GIT_PROMPT_UNMERGED="|UNMERGED"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
+export ZSH_THEME_GIT_PROMPT_ADDED="+"
+export ZSH_THEME_GIT_PROMPT_MODIFIED="!"
+export ZSH_THEME_GIT_PROMPT_DELETED="-"
+export ZSH_THEME_GIT_PROMPT_RENAMED=">"
+export ZSH_THEME_GIT_PROMPT_UNMERGED="|UNMERGED"
+export ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
 
 
-
+git_prompt_info
 ## Shell promt
   export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[red]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_prompt_info)> '
 

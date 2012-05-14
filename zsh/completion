@@ -11,4 +11,4 @@ zstyle ':completion:*' hosts off
 zstyle ':completion:*' insert-tab pending
 
 # completion menu
-zstyle ':completion:*:*:*:default' menu yes select
+# zstyle ':completion:*:*:*:default' menu yes select  # 

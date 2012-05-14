@@ -1,65 +1,60 @@
 # color support for tmux
-alias tmux="tmux -2"
+  alias tmux="tmux -2"
 
 # su
-alias su='sudo -s'
+  alias su='sudo -i'
 
 # vi
-alias vi='vim'
+  alias vi='vim'
 
 # cd
-alias ..='cd ..'
+  alias ..='cd ..'
 
 # grep 
-alias egrep='egrep --color'
-alias grep='grep --color'
+  alias egrep='egrep --color'
+  alias grep='grep --color'
 
 # process grep
-alias pg='ps -ef | grep -v grep | grep'
+  alias pg='ps -ef | grep -v grep | grep'
 
 # ls
-alias ll="ls -l"
-alias la='ls -la'
+  alias ll="ls -l"
+  alias la='ls -la'
 
 #pacman 
-alias install='pacman -Syu '
-alias remove='pacman -Rsnc '
-alias search='pacman -Ss '
-alias removeunused='pacman -Rsn $(pacman -Qqdt)'
-
+  alias install='pacman -Syu '
+  alias remove='pacman -Rsnc '
+  alias search='pacman -Ss '
+  alias removeunused='pacman -Rsn $(pacman -Qqdt)'
 
 #git
-function current_branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-echo ${ref#refs/heads/}
-}
+  alias g='git'
+  alias gst='git status'
+  compdef _git gst=git-status
 
-alias g='git'
-alias gst='git status'
-compdef _git gst=git-status
-alias gpl='git pull'
-compdef _git gpl=git-pull
-alias gps='git push origin'
-compdef _git gps=git-push
-alias gc='git commit -a -m'
-compdef _git gc=git-commit
-alias ga='git add '
-compdef _git ga=git-add
-alias gco='git checkout'
-compdef _git gco=git-checkout
-alias gb='git branch -a'
-compdef _git gb=git-branch
-alias gl='git log --graph --max-count=5'
-compdef _git gl=git-log
-# these aliases take advantage of the previous function
-#alias ggpull='git pull origin $(current_branch)'
-#compdef ggpull=git
-#alias ggpush='git push origin $(current_branch)'
-#compdef ggpush=git
-#alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
-#compdef ggpnp=git
+  alias gpl='git pull'
+  compdef _git gpl=git-pull
+
+  alias gps='git push origin'
+  compdef _git gps=git-push
+
+  alias gc='git commit -a -m'
+  compdef _git gc=git-commit
+
+  alias ga='git add '
+  compdef _git ga=git-add
+
+  alias gco='git checkout'
+  compdef _git gco=git-checkout
+
+  alias gb='git branch -a'
+  compdef _git gb=git-branch
+
+  alias gl='git log --graph --max-count=5'
+  compdef _git gl=git-log
 
 #bc
-alias calc="bc"
+  alias calc="bc"
+
 # reload zsh settings
-alias reload='. ~/.zshrc'
+  alias reload='. ~/.zshrc'

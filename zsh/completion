@@ -4,5 +4,11 @@ compinit
 # matches case insensitive for lowercase
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+# disable suggestion of hosts from /etc/hosts 
+zstyle ':completion:*' hosts off
+
 # pasting with tabs doesn't perform completion
 zstyle ':completion:*' insert-tab pending
+
+
+zstyle ':completion:*:*:*:default' menu yes select

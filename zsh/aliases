@@ -38,7 +38,7 @@
   alias gps='git push origin'
   compdef _git gps=git-push
 
-  alias gcm='git commit -a -m'
+  alias gcm='git add . && git commit -a -m'
   compdef _git gc=git-commit
 
   alias ga='git add '

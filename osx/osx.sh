@@ -15,6 +15,9 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 defaults write com.apple.menuextra.battery ShowPercent -string "NO"
 defaults write com.apple.menuextra.battery ShowTime -string "NO"
 
+# Disable dock-hide delay
+defaults write com.apple.Dock autohide-delay -float 0
+
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic"
 

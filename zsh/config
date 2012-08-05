@@ -1,23 +1,38 @@
 ## Init Zsh functions
-fpath=(~/.zsh/functions $fpath)
-autoload -U ~/.zsh/functions/*(:t)
+  autoload -Uz compinit
+  compinit
+  compdef -d git
+  fpath=(~/.zsh/functions $fpath)
+  autoload -U ~/.zsh/functions/*(:t)
 
 ## Check which host we are running on
-export SHORTHOST=$(hostname -s)
+  export SHORTHOST=$(hostname -s)
 
 ## Export lang for mosh to work
-export LANG=en_US.UTF-8
+  export LANG=en_EN.UTF-8
 
 ## Colors
-autoload -U colors && colors
+  autoload -U colors && colors
 
-## Check which host we are running on
-export SHORTHOST=$(hostname -s)
+## Git symbols
+export ZSH_THEME_GIT_PROMPT_PREFIX="(" # Prefix at the very beginning of the prompt, before the branch name
+export ZSH_THEME_GIT_PROMPT_SUFFIX=") " # At the very end of the prompt
+export ZSH_THEME_GIT_PROMPT_DIRTY=" ~" # Text to display if the branch is dirty
+export ZSH_THEME_GIT_PROMPT_CLEAN="" # Text to display if the branch is clean
 
+export ZSH_THEME_GIT_PROMPT_ADDED="+"
+export ZSH_THEME_GIT_PROMPT_MODIFIED="!"
+export ZSH_THEME_GIT_PROMPT_DELETED="-"
+export ZSH_THEME_GIT_PROMPT_RENAMED=">"
+export ZSH_THEME_GIT_PROMPT_UNMERGED="|UNMERGED"
+export ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
+
+
+git_prompt_info
 ## Shell promt
-export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[red]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_info_for_prompt)> '
+  export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[red]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_prompt_info)> '
 
-function setWindowTitle() {
+  function setWindowTitle() {
         case $TERM in
         screen*)
 		# We're in screen or tmux, so set the terminal title and the screen window title
@@ -28,18 +43,17 @@ function setWindowTitle() {
                 print -Pn "\033]0;%n@%m: %~\007"
 		;;
         esac
-}
-
+  }
 
 ## Set & reset the terminal title(s)
-function precmd() {
+  function precmd() {
         setWindowTitle
-}
-function preexec() {
+  }
+  function preexec() {
 	setWindowTitle
-}
-precmd_functions+=title_precmd
-preexec_functions+=title_preexec
+  }
+  precmd_functions+=title_precmd
+  preexec_functions+=title_preexec
 
 ## Editor, path & manpath 
   export EDITOR='vim'
@@ -62,13 +76,8 @@ preexec_functions+=title_preexec
   SAVEHIST=1000
 
 ## Zsh options
-
   setopt autocd
-  setopt NO_BG_NICE # don't nice background tasks
-  setopt NO_HUP
   setopt NO_LIST_BEEP
-  setopt LOCAL_OPTIONS # allow functions to have local options
-  setopt LOCAL_TRAPS # allow functions to have local traps
   setopt HIST_VERIFY
   setopt SHARE_HISTORY # share history between sessions ???
   setopt PROMPT_SUBST
@@ -78,6 +87,14 @@ preexec_functions+=title_preexec
   setopt INC_APPEND_HISTORY # adds history incrementally 
   setopt HIST_IGNORE_ALL_DUPS # don't record dupes in history
   setopt HIST_REDUCE_BLANKS
-zle -N newtab
 
-mdc() { mkdir -p "$1" && cd "$1" }
+## Key bindings
+  bindkey '^R' history-incremental-search-backward
+  bindkey '^A' beginning-of-line
+  bindkey '^E' end-of-line
+
+## Autojupm 
+  export AUTOJUMP_IGNORE_CASE=0
+  if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
+      . /opt/local/etc/profile.d/autojump.sh
+  fi

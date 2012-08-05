@@ -78,6 +78,9 @@ alexander.xcuserdatad
 *.mtc
 *.mtc0
 
+# Editor project files # 
+*.chproj
+*.tmproj
 # Other VCS# 
 ############
 .hg

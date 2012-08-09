@@ -30,7 +30,7 @@ export ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
 
 git_prompt_info
 ## Shell promt
-  export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[red]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_prompt_info)> '
+  export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[blue]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_prompt_info)> '
 
   function setWindowTitle() {
         case $TERM in

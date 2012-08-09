@@ -11,7 +11,7 @@
         <key>Label</key>
         <string>st.alr.tm</string>
         <key>Program</key>
-        <string>/Users/alexander/.scripts/./tm.sh</string>
+        <string>/Users/alexander/.scripts/./tm</string>
         <key>StartInterval</key> 
         <integer>14440</integer>
         <key>LowPriorityIO</key>

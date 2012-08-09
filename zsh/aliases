@@ -2,7 +2,7 @@
   alias tmux="tmux -2"
 
 # su
-  alias su='sudo -i'
+alias su='sudo -i'
 
 # vi
   alias vi='vim'
@@ -22,14 +22,12 @@
   alias la='ls -la'
 
 #pacman 
-  alias install='pacman -Syu '
-  alias remove='pacman -Rsnc '
-  alias search='pacman -Ss '
-  alias removeunused='pacman -Rsn $(pacman -Qqdt)'
+alias pinstall='pacman -Syu '
+alias premove='pacman -Rsnc '
+alias psearch='pacman -Ss '
+alias premoveunused='pacman -Rsn $(pacman -Qqdt)'
 
 #git
-  alias git="hub"
-
   alias g='git'
   alias gst='git status'
   compdef _git gst=git-status

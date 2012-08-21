@@ -3,7 +3,8 @@
 
 START=0
 END=0
-GROWLNOTIFY="/usr/local/bin/growlnotify"
+# sudo gem install terminal-notifier
+NOTIFY="/usr/bin/terminal-notifier"
 
 # Replace the following values here or export as environment variables in ~/.zsh/local
 SOURCE=$TMSOURCE
@@ -13,16 +14,16 @@ EXCLUDE=$TMEXCLUDEFILE
 
 start_notify () {
 	START=$(date +%s)
-	if [[ -e $GROWLNOTIFY ]]; then
-		$GROWLNOTIFY -a growlnotify -t "TimeMachine" -a Time\ Machine -m "Destination reachable. Starting"
+	if [[ -e $NOTIFY ]]; then
+		$NOTIFY -title "TimeMachine" -message "Destination reachable. Starting backup"
 	fi
 }
 
 end_success_notify () {
 	END=$(date +%s)
 	DIFF=$((( $END - $START )/60))
-	if [[ -e $GROWLNOTIFY ]]; then
-		$GROWLNOTIFY -a growlnotify -t "TimeMachine" -a Time\ Machine -m "Backup finished in $DIFF minutes"
+	if [[ -e $NOTIFY ]]; then
+		$NOTIFY -title "TimeMachine" -message "Backup finished in $DIFF minutes"
 	fi
 }
 

@@ -4,7 +4,7 @@ SCRIPTPATH="$(cd "${0%/*}" 2>/dev/null; echo "$PWD"/"${0##*/}")"
 BASEDIR=`dirname "$SCRIPTPATH"`
 
 function doIt() {  
-  # Note: -T prevents creatin of symlink in existing symlinks target, thus replaces the link for folders
+  # Note: -T prevents creating of symlink in existing symlinks target, thus replaces the link for folders
   ln -f -s $BASEDIR/vim ~/.vim
   ln -f -s $BASEDIR/zsh ~/.zsh
   ln -f -s $BASEDIR/bash ~/.bash

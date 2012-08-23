@@ -31,6 +31,7 @@ function doIt() {
     git config --global user.name "$GITUSER"
     git config --global user.email "$GITMAIL"
     git config --global core.excludesfile ~/.gitignore
+    echo "Now link ~/sublime to your sublime user directory (e.g.: ln -s ~/.sublime ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User)"
   fi
 }
 

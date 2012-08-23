@@ -5,16 +5,16 @@ BASEDIR=`dirname "$SCRIPTPATH"`
 
 function doIt() {  
   # Note: -T prevents creating of symlink in existing symlinks target, thus replaces the link for folders
-  ln -h -f -s $BASEDIR/sublime/User ~/.sublime # Manually link to Packages/User in your Sublime folder
-  ln -h -f -s $BASEDIR/vim ~/.vim
-  ln -h -f -s $BASEDIR/zsh ~/.zsh
-  ln -h -f -s $BASEDIR/bash ~/.bash
-  ln -h -f -s $BASEDIR/zsh/zshrc ~/.zshrc
-  ln -h -f -s $BASEDIR/bash/bashrc ~/.bashrc
-  ln -h -f -s $BASEDIR/tmux/tmux.conf ~/.tmux.conf
-  ln -h -f -s $BASEDIR/scripts ~/.scripts
-  ln -h -f -s $BASEDIR/git/gitignore ~/.gitignore
-  ln -h -f -s $BASEDIR/gem/gemrc ~/.gemrc
+  ln -n -f -s $BASEDIR/sublime/User ~/.sublime # Manually link to Packages/User in your Sublime folder
+  ln -n -f -s $BASEDIR/vim ~/.vim
+  ln -n -f -s $BASEDIR/zsh ~/.zsh
+  ln -n -f -s $BASEDIR/bash ~/.bash
+  ln -n -f -s $BASEDIR/zsh/zshrc ~/.zshrc
+  ln -n -f -s $BASEDIR/bash/bashrc ~/.bashrc
+  ln -n -f -s $BASEDIR/tmux/tmux.conf ~/.tmux.conf
+  ln -n -f -s $BASEDIR/scripts ~/.scripts
+  ln -n -f -s $BASEDIR/git/gitignore ~/.gitignore
+  ln -n -f -s $BASEDIR/gem/gemrc ~/.gemrc
 
   # Protect user gem dir from accidential writing
   if [ -d "~/.gem" ]; then

@@ -5,15 +5,17 @@ BASEDIR=`dirname "$SCRIPTPATH"`
 
 function doIt() {  
   # Note: -T prevents creating of symlink in existing symlinks target, thus replaces the link for folders
-  ln -f -s $BASEDIR/vim ~/.vim
-  ln -f -s $BASEDIR/zsh ~/.zsh
-  ln -f -s $BASEDIR/bash ~/.bash
-  ln -f -s $BASEDIR/zsh/zshrc ~/.zshrc
-  ln -f -s $BASEDIR/bash/bashrc ~/.bashrc
-  ln -f -s $BASEDIR/tmux/tmux.conf ~/.tmux.conf
-  ln -f -s $BASEDIR/scripts ~/.scripts
-  ln -f -s $BASEDIR/git/gitignore ~/.gitignore
-  ln -f -s $BASEDIR/gem/gemrc ~/.gemrc
+  mkdir -p "~/Library/Application\ Support/Sublime\ Text\ 2/Packages"
+  ln -h -f -s $BASEDIR/sublime/User ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User
+  ln -h -f -s $BASEDIR/vim ~/.vim
+  ln -h -f -s $BASEDIR/zsh ~/.zsh
+  ln -h -f -s $BASEDIR/bash ~/.bash
+  ln -h -f -s $BASEDIR/zsh/zshrc ~/.zshrc
+  ln -h -f -s $BASEDIR/bash/bashrc ~/.bashrc
+  ln -h -f -s $BASEDIR/tmux/tmux.conf ~/.tmux.conf
+  ln -h -f -s $BASEDIR/scripts ~/.scripts
+  ln -h -f -s $BASEDIR/git/gitignore ~/.gitignore
+  ln -h -f -s $BASEDIR/gem/gemrc ~/.gemrc
 
   # Protect user gem dir from accidential writing
   if [ -d "~/.gem" ]; then

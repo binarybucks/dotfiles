@@ -29,7 +29,7 @@ alias premoveunused='pacman -Rsn $(pacman -Qqdt)'
 
 #git
   alias g='git'
-  alias gst='git status'
+  alias gst='git status --ignore-submodules'
   compdef _git gst=git-status
 
   alias gpl='git pull'

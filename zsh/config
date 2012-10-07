@@ -9,8 +9,8 @@
   export SHORTHOST=$(hostname -s)
 
 ## Export lang for mosh to work
-  export LANG=en_EN.UTF-8
-
+  export LANG=en_GB.UTF-8
+  export LC_ALL=$LANG
 ## Colors
   autoload -U colors && colors
 
@@ -30,7 +30,7 @@ export ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
 
 git_prompt_info
 ## Shell promt
-  export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[blue]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_prompt_info)> '
+  export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[yellow]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_prompt_info)> '
 
   function setWindowTitle() {
         case $TERM in
@@ -92,9 +92,3 @@ git_prompt_info
   bindkey '^R' history-incremental-search-backward
   bindkey '^A' beginning-of-line
   bindkey '^E' end-of-line
-
-## Autojump
-  export AUTOJUMP_IGNORE_CASE=0
-  if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
-      . /opt/local/etc/profile.d/autojump.sh
-  fi

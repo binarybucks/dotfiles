@@ -2,3 +2,5 @@ source ~/.zsh/config
 source ~/.zsh/aliases
 source ~/.zsh/completion
 [[ -r ~/.zsh/local ]] && source ~/.zsh/local 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

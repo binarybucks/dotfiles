@@ -1,10 +1,16 @@
 #! /bin/bash
 # On OSX copy plist to ~/Library/LaunchAgents for periodic backups
 
+
 START=0
 END=0
 # sudo gem install terminal-notifier
 NOTIFY="/usr/bin/terminal-notifier"
+PING="/sbin/ping"
+RSYNC="/usr/bin/rsync"
+
+# Source ~/zsh/local to get access to environment variables in non-login shells (e.g launchd)
+. /Users/alexander/.zsh/local
 
 # Replace the following values here or export as environment variables in ~/.zsh/local
 SOURCE=$TMSOURCE
@@ -28,20 +34,20 @@ end_success_notify () {
 }
 
 check_dest() {
-	  count=$(/sbin/ping -c 3 -o $DEST_HOST | grep "received" | awk -F',' '{ print $2 }' | awk '{ print $1 }')
+	  count=$($PING -c 3 -o $DEST_HOST | grep "received" | awk -F',' '{ print $2 }' | awk '{ print $1 }')
 
 	  if [ "$count" != 1  ]; then
 	    # 100% failed - try one more time after sleeping for 30 secs
-		if [[ -e $GROWLNOTIFY ]]; then
-			$GROWLNOTIFY -a growlnotify -t "TimeMachine" -a Time\ Machine -m "Destination not reachable. Retrying"
+		if [[ -e $NOTIFY ]]; then
+	        	$NOTIFY -title "TimeMachine" -message "Destination not reachable. Retrying"
 		fi
 	    sleep 30
-	    count=$(/sbin/ping -c 3 -o $filer | grep "received" | awk -F',' '{ print $2 }' | awk '{ print $1 }')
+	    count=$($PING -c 3 -o $filer | grep "received" | awk -F',' '{ print $2 }' | awk '{ print $1 }')
 	  	if [ "$count" != 1  ]; then
-			if [[ -e $GROWLNOTIFY ]]; then
-				$GROWLNOTIFY -a growlnotify -t "TimeMachine" -a Time\ Machine -m "Destination not reachable. Exiting."
-			fi
-	                exit;
+	                            if [[ -e $NOTIFY ]]; then
+                        $NOTIFY -title "TimeMachine" -message "Destination not reachable. Exiting"
+                fi
+			    exit;
 	        else 
 		        start_notify
 	        fi
@@ -51,7 +57,7 @@ check_dest() {
 }
 
 sync () {
-	rsync --archive --delete --progress --delete-excluded -v --inplace --partial --executability --exclude-from=$EXCLUDE $SOURCE $DEST
+	$RSYNC --archive --delete --progress --delete-excluded -v --inplace --partial --executability --exclude-from=$EXCLUDE $SOURCE $DEST 
 }
 
 check_dest

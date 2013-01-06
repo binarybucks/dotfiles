@@ -63,4 +63,4 @@ alias premoveunused='pacman -Rsn $(pacman -Qqdt)'
   alias reload='. ~/.zshrc'
 
 #ncdc
-  alias ncdc='ncec --session-dir=/storage/files/Apps/Ncdc/'
+  alias ncdc='ncdc --session-dir=/storage/files/Apps/Ncdc/'

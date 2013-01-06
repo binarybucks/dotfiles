@@ -1,6 +1,9 @@
 # color support for tmux
   alias tmux="tmux -2"
 
+# prolog
+alias pl="swipl"
+
 # su
 alias su='sudo -i'
 

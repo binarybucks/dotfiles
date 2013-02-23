@@ -3,7 +3,9 @@
 	"installed_packages":
 	[
 		"LaTeXTools",
+		"lispindent",
 		"Package Control",
+		"SublimeREPL",
 		"Theme - Soda"
 	]
 }

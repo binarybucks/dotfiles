@@ -19,8 +19,7 @@ else
   case $SHORTHOST in
    $HOSTNAMEHOMESERVER) 
      tmux new-window -t default:1 -n 'Htop' 'htop'
-     tmux new-window -t default:2 -n 'Alsamixer' 'alsamixer'
-     tmux new-window -t default:3 -n 'Ncdc' 'tmux -S /tmp/ncdc attach'
+     tmux new-window -t default:2 -n 'Ncdc' 'tmux -S /tmp/ncdc attach'
      ;;
    *)
      echo "No session presets set"	
@@ -28,4 +27,4 @@ else
   esac
 fi 
 
-tmux attach-session -t default 
+tmux attach-session -t default -d

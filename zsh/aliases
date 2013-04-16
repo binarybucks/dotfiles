@@ -4,9 +4,6 @@
 # prolog
 alias pl="swipl"
 
-# su
-alias su='sudo -i'
-
 # vi
   alias vi='vim'
 

@@ -60,4 +60,4 @@ alias premoveunused='pacman -Rsn $(pacman -Qqdt)'
   alias reload='. ~/.zshrc'
 
 # systemd journal follow
-alias jf='journalctl -n 200 -u -f'
+alias jf='journalctl -n 200 -f'

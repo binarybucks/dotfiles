@@ -2,9 +2,15 @@
 	"auto_upgrade_last_run": null,
 	"installed_packages":
 	[
+		"Arduino",
+		"Arduino-like IDE",
+		"Git",
+		"Github Tools",
 		"LaTeXTools",
 		"lispindent",
 		"Package Control",
+		"Prolog",
+		"sublime-better-coffeescript",
 		"SublimeREPL",
 		"Theme - Soda"
 	]

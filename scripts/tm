@@ -1,1 +1,2 @@
-TimeMachine/tm.sh
+#!/bin/sh
+echo "doing nothing"

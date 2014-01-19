@@ -4,13 +4,14 @@
 	[
 		"Arduino",
 		"Arduino-like IDE",
+		"Better CoffeeScript",
 		"Git",
 		"Github Tools",
 		"LaTeXTools",
 		"lispindent",
 		"Package Control",
 		"Prolog",
-		"sublime-better-coffeescript",
+		"SublimeOnSaveBuild",
 		"SublimeREPL",
 		"Theme - Soda"
 	]

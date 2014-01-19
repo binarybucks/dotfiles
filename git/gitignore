@@ -85,3 +85,9 @@ alexander.xcuserdatad
 ############
 .hg
 .svn
+
+
+# Android #
+###########
+apps/android/bin
+apps/android/gen

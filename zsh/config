@@ -32,7 +32,8 @@ export ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
 
 git_prompt_info
 ## Shell promt
-  export PS1='%{$fg[white]%}%n@%m %{$fg[reset_color]%}%{$fg_bold[yellow]%}%3~%{$fg[reset_color]%} %{$fg[white]%}$(git_prompt_info)> '
+  #export PS1='%{$fg[black]%}%n@%m %{$fg[black]%}%{$fg_bold[black]%}%3~%{$fg[reset_color]%} %{$fg[black]%}$(git_prompt_info)> '
+  export PS1='%n@%m %3~ $(git_prompt_info)> '
 
   function setWindowTitle() {
         case $TERM in
@@ -59,17 +60,10 @@ git_prompt_info
 
 ## Editor, path & manpath 
   export EDITOR='vim'
-  export CLASSPATH=".:/Users/alexander/Studium/Semester4/FLA/Antlr/antlr-3.4-complete.jar:$CLASSPATH:"
-  export PATH="~/bin:$HOME/.scripts:/opt/local/bin:/usr/local/bin:/usr/local/sbin:/usr/texbin:/usr/local/mysql/bin:/usr/lib/ruby/gems/1.9.1:$PATH"
+  export PATH="~/.bin:~/.scripts:/opt/local/bin:/usr/local/bin:/usr/local/sbin:$PATH"
   export MANPATH="/usr/local/man:$MANPATH"
 
-## Hostnames
-  export HOSTNAMEPRIVATENOTEBOOK="heisenberg"
-  export HOSTNAMEHOMESERVER="fermi"
-  export HOSTNAMEWORKNOTEBOOK="tp"
-
 ## Custom Paths
-  export SEMESTERPATH=~/Studium/Semester4
   export CODEPATH=~/Code
 
 ## Zsh historyy
@@ -81,7 +75,7 @@ git_prompt_info
   setopt autocd
   setopt NO_LIST_BEEP
   setopt HIST_VERIFY
-  setopt SHARE_HISTORY # share history between sessions ???
+  setopt SHARE_HISTORY
   setopt PROMPT_SUBST
   setopt COMPLETE_IN_WORD
   setopt IGNORE_EOF

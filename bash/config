@@ -1,6 +1,0 @@
-if [[ ! -z "$PS1" ]]; then
-## start zsh if available
-        [ -f /bin/zsh ] && {
-                exec /bin/zsh -l
-        }
-fi

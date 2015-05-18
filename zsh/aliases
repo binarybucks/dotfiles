@@ -1,9 +1,6 @@
 # color support for tmux
   alias tmux="tmux -2"
 
-# prolog
-alias pl="swipl"
-
 # vi
   alias vi='vim'
 
@@ -13,19 +10,11 @@ alias pl="swipl"
 # grep 
   alias egrep='egrep --color'
   alias grep='grep --color'
-
-# process grep
   alias pg='ps -ef | grep -v grep | grep'
 
 # ls
   alias ll="ls -l"
   alias la='ls -la'
-
-#pacman 
-alias pinstall='pacman -Syu '
-alias premove='pacman -Rsnc '
-alias psearch='pacman -Ss '
-alias premoveunused='pacman -Rsn $(pacman -Qqdt)'
 
 #git
   alias g='git'
@@ -53,11 +42,5 @@ alias premoveunused='pacman -Rsn $(pacman -Qqdt)'
   alias gl='git log --graph --max-count=5'
   compdef _git gl=git-log
 
-#bc
-  alias calc="bc"
-
-# reload zsh settings
-  alias reload='. ~/.zshrc'
-
 # systemd journal follow
-alias jf='journalctl -n 200 -f'
+  alias jf='journalctl -n 200 -f'

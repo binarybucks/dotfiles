@@ -8,7 +8,6 @@ function doIt() {
   ln -n -f -s $BASEDIR/vim ~/.vim
   ln -n -f -s $BASEDIR/zsh ~/.zsh
   ln -n -f -s $BASEDIR/zsh/zshrc ~/.zshrc
-  ln -n -f -s $BASEDIR/scripts ~/.scripts
   ln -n -f -s $BASEDIR/bin ~/.bin
   ln -n -f -s $BASEDIR/git/gitignore ~/.gitignore
 

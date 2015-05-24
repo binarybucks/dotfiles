@@ -60,7 +60,7 @@ git_prompt_info
 
 ## Editor, path & manpath 
   export EDITOR='vim'
-  export PATH="~/.bin:~/.scripts:/opt/local/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+  export PATH="~/.bin:/opt/local/bin:/usr/local/bin:/usr/local/sbin:$PATH"
   export MANPATH="/usr/local/man:$MANPATH"
 
 ## Custom Paths
@@ -89,31 +89,13 @@ git_prompt_info
   bindkey '^A' beginning-of-line
   bindkey '^E' end-of-line
 
-
-## Setup SSH Agent environment
-  export SSH_AUTH_SOCK_DEFAULT=~/.ssh/.agent_socket
-  # ~/.ssh/.agent_socket always points to the SSH agent socket of the latest session
-  # If there are multiple sessions, and the latest session is closed, SSH agent will stop working in all other sessions
-  # running fixagent relinks the ~/.ssh/.agent_socket to the the latest agent socket
-  alias fixagent='LAST="$(find /tmp/ssh-* -user `whoami` -name agent\* | tail -n 1)" && ln -sf "$LAST" "$SSH_AUTH_SOCK_DEFAULT" && export SSH_AUTH_SOCK=$SSH_AUTH_SOCK_DEFAULT && echo "SSH_AUTH_SOCK initialized: $SSH_AUTH_SOCK_DEFAULT -> $LAST"'
-
-
-#Check if SSH_AUTH_SOCK is a socket. If so, symlink ~/.ssh/.agent_socket to it. 
-  echo "Current SSH_AUTH_SOCK: $SSH_AUTH_SOCK"
-  if [[ -S $SSH_AUTH_SOCK && ! -h $SSH_AUTH_SOCK ]]; then
-    ln -sf $SSH_AUTH_SOCK $SSH_AUTH_SOCK_DEFAULT
-    echo "SSH agent environment initialized: $SSH_AUTH_SOCK_DEFAULT -> $SSH_AUTH_SOCK"
-  fi
-  export SSH_AUTH_SOCK=$SSH_AUTH_SOCK_DEFAULT;
-
-# Check if an agent is already running. If not, start it at $SSH_AUTH_SOCK_DEFAULT
-  ssh-add -l >/dev/null 2>&1
-  if [ $? = 2 ]; then
-    rm -rf $SSH_AUTH_SOCK
-    ssh-agent -a $SSH_AUTH_SOCK >| ~/.ssh/.agent_env
-    source ~/.ssh/.agent_env
-    echo "SSH agent started"
-  else 
-    echo "SSH agent identities"
-    ssh-add -l
-  fi
+if [ -n "$ENABLE_GPG_SSH_AGENT" ]; then 
+	envfile="$HOME/.gnupg/gpg-agent.env"
+	if [[ -e "$envfile" ]] && kill -0 $(grep GPG_AGENT_INFO "$envfile" | cut -d: -f 2) 2>/dev/null; then
+	    eval "$(cat "$envfile")"
+	else
+	    eval "$(gpg-agent --daemon --enable-ssh-support --write-env-file "$envfile")"
+	fi
+	export GPG_AGENT_INFO  # the env file does not contain the export statement
+	export SSH_AUTH_SOCK   # enable gpg-agent for ssh
+fi
